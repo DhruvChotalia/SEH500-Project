@@ -84,12 +84,20 @@ int main(void) {
     BOARD_InitBootPeripherals();
     BOARD_InitDebugConsole();
 
+    /* * GenAI Citation: Gemini provided this Manual Clock Force routine to prevent
+         * the Assembly driver from triggering a Hard Fault on startup.
+    */
+
     CLOCK_EnableClock(kCLOCK_PortA);
     CLOCK_EnableClock(kCLOCK_PortC);
     CLOCK_EnableClock(kCLOCK_PortD);
     CLOCK_EnableClock(kCLOCK_PortE);
 
     asm_setup_gpio();
+
+    /* * GenAI Citation: Gemini provided the manual configuration struct below
+         * to enable the internal Pull-Up Resistor for stable button reads.
+    */
 
     // Force Button Config
     port_pin_config_t sw2_setup = {
