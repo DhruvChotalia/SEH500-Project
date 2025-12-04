@@ -10,6 +10,11 @@
 /* K66F REGISTER DEFINITIONS                          */
 /* ========================================================================= */
 
+/* * GenAI Citation:
+ * Gemini was used to generate the Physical Memory Map definitions below
+ * to allow Direct Register Access, bypassing the standard SDK drivers.
+ */
+
 /* SIM_SCGC5 (System Clock Gating Control Register 5) */
 .equ SIM_SCGC5,      0x40048038
 .equ PORTA_CLOCK,    (1<<9)   /* Port A for Blue LED */
@@ -247,7 +252,9 @@ done_led:
 /* ========================================================================= */
 /* FUNCTION: asm_nurse_ack                                                   */
 /* Purpose:  Turn on WHITE LED (Steady) to indicate Acknowledgment           */
-/* (Replaces old Blink Blue logic)                                           */
+/* * GenAI Citation: I learned the syntax for the BIC (Bit Clear) 
+     * instruction from Gemini to correctly drive Active-Low LEDs.
+*/
 /* ========================================================================= */
 .global asm_nurse_ack
 .type asm_nurse_ack, %function
